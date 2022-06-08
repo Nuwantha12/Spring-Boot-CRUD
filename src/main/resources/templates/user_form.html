@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/javascript" th:href="@{/webjars/bootstrap/js/bootstrap.min.js}" />
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h2>Add new User<</h2>
+
+    <div>
+        <form th:action="@{/user/save}" method="post" th:object="${user}">
+            <input type="hidden" th:field="*{id}">
+            <div class="border">
+                <div class="form-group raw">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required minlength="8" maxlength="45">
+
+            </div>
+            <div class="form-group raw">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="email" class="form-control" th:field="*{firstName}" id="exampleInputFirstName" aria-describedby="emailHelp" placeholder="Enter First Name" required maxlength="45" >
+
+            </div>
+            <div class="form-group raw">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" th:field="*{lastName}" id="exampleInputLastName" aria-describedby="emailHelp" placeholder="Enter Last name" required  maxlength="45">
+
+            </div>
+            <div class="form-group raw">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassword1" placeholder="Password" required minlength="8" maxlength="15">
+            </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" th:field="*{enabled}" for="exampleCheck1">Enabled</label>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div>
+    <script type="text/javascript">
+        function cancelForm(){
+            window.location = "[[@{/users}]]"
+        }
+
+    </script>
+</div>
+
+</body>
+
+</html>
